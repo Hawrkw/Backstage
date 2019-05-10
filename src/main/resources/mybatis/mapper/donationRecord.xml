@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.mapper.DonationRecordMapper">
+    <select id="getDonationRecordByUserIdAndProjectId" resultType="com.example.demo.entity.DonationRecord">
+        select donationRecordId,userId, projectId,donationNumber,donationAmount,donorName
+        from donation_record
+        where userId = #{userId} and projectId = #{projectId}
+    </select>
+    <insert id="addDonationRecord" parameterType="com.example.demo.entity.DonationRecord" useGeneratedKeys="true" keyProperty="donationRecordId">
+        INSERT INTO donation_record (userId, projectId,donationNumber,donationAmount,donorName)
+        VALUES (#{userId}, #{projectId},#{donationNumber},#{donationAmount},#{donorName})
+    </insert>
+    <update id="updateDonationRecord" parameterType="com.example.demo.entity.DonationRecord">
+        update donation_record
+        set donationNumber = #{donationNumber},
+        donationAmount = #{donationAmount}
+        where userId = #{userId} and projectId = #{projectId}
+    </update>
+    <select id="getDonationRecordByUserId" resultType="com.example.demo.entity.DonationRecord">
+        select donationRecordId,userId, projectId,donationNumber,donationAmount,donorName
+        from donation_record
+        where userId = #{userId}
+    </select>
+</mapper>

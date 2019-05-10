@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.mapper.CharityProjectMapper">
+
+    <select id="getCharityProjectByCategoryId" resultType="com.example.demo.entity.CharityProject">
+        select projectId, categoryId,projectName,projectImagePath,raisedFunds,participantNumber,
+        introduce,projectPlan,budget,budgetBreakdown,state,addTime,startingTime,endingTime
+        from charity_project
+        where categoryId = #{arg0}
+    </select>
+    <select id="getCharityProjectById" resultType="com.example.demo.entity.CharityProject">
+        select projectId, categoryId,projectName,projectImagePath,raisedFunds,participantNumber,
+        introduce,projectPlan,budget,budgetBreakdown,state,addTime,startingTime,endingTime
+        from charity_project
+        where projectId = #{arg0}
+    </select>
+    <select id="getCharityProjectByUserId" resultType="com.example.demo.entity.CharityProject">
+        select projectId, categoryId,projectName,projectImagePath,raisedFunds,participantNumber,
+        introduce,projectPlan,budget,budgetBreakdown,state,addTime,startingTime,endingTime
+        from charity_project
+        where userId = #{arg0}
+    </select>
+    <select id="getFeedbackByProjectId" resultType="com.example.demo.entity.Feedback">
+        select feedbackId,projectId,time,feedbackName,feedbackIntroduce
+        from feedback
+        where projectId = #{arg0}
+    </select>
+</mapper>
